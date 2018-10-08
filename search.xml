@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F09%2F17%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[关于位运算的一些有的没的]]></title>
+    <url>%2F2018%2F09%2F26%2Fpage%2F</url>
+    <content type="text"><![CDATA[本文旨在简单介绍位运算的操作与应用 #引言 首先第一个问题，什么是位运算呢？为什么学这个东西呢？ 众所周知，在计算机中所有的运算都是基于二进制的。比如说，计算3+5，事实上计算机并不会直接去计算3+5等于多少，而是先将3转化成11将5转化成101，之后计算101+11得出答案1000最后把1000再转化成十进制，即8。这样一个流程下来你的确得出这个结果，但很明显的是3+5这个式子的计算效率不如101+11。在平常我们可能见过这个式子：x&lt;&lt;1,它和x*2是等价的（为什么等会会说），但因为前者是按它十进制的二进制位进行运算的，所以前者要比后者快。（直观地讲最起码快了一个2由十进制转化成二进制的时间）所以上面的第二个问题我们已经有了答案，即： 位运算对提高程序时空效率有着显著帮助 接下来让我开始回答第一个问题，什么是位运算呢，顾名思义，位运算即按位进行的运算（一句正确的废话），就是说我们把二进制下的数一位一位进行运算。基础的算数位运算有4种，分别为与运算（and,&amp;)；或运算（or,|）；非运算（not,~）；还有异或运算（xor，^）。具体是这样的 (所有运算中负数按补码进行运算) #基础位运算 ##与运算 1 &amp; 1 = 1, 1 &amp; 0 = 0, 0 &amp; 1 = 0, 0 &amp; 0 = 0. ps. 3 &amp; 5 = 00000011 &amp; 00000101 = 00000001 = 1（0不能省） 用逻辑语言讲就是除非两个都为真结果才为真，否则结果为假 ##或运算 1 | 1 = 1, 1 | 0 = 1, 0 | 1 = 1, 0 | 0 = 0. ps. 3 &amp; 5 = 00000011 &amp; 00000101 = 00000111 = 7 用逻辑语言讲就是两个任一为真结果就为真，否则结果为假 ##异或运算 1 ^ 1 = 1, 1 ^ 0 = 0, 0 ^ 1 = 0, 0 ^ 0 = 1 ps. 3 ^ 5 = 00000011 ^ 00000101 = 11111001 = 249 用逻辑语言讲就是两个如果状态相同为真，不同为假 ##非运算（取反） 这个运算有点特殊因为它不是两个数之间的运算，而是对一个数字做的一种操作。 ps. ～5 = ～00000101 = 11111010 = 250 上述操作还不熟悉的自行面壁吧(｡ì _ í｡) ##左移与右移 二进制中还有一种用法就是二进制数的左移与右移，例子的话就是上面说的x&lt;&lt;1它的作用是将x*2具体实现原理的话就是把x这个数的二进制形式左移一位然后在它的末尾补零。 ps 5&lt;&lt;1 = 00000101 &lt;&lt; 1 = 00001010 = 10 右移也是同样的道理。]]></content>
+      <categories>
+        <category>算法 经验</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
   </entry>
 </search>
