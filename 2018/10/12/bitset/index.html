@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>tags | Hexo</title>
+  <title>STL - bitset 的使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个很弱的oier的胡言乱语">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
+<meta name="keywords" content="bitset 位运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL - bitset 的使用">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/bitset/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一个很弱的oier的胡言乱语">
+<meta property="og:description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-17T13:50:24.167Z">
+<meta property="og:updated_time" content="2018-10-12T13:47:47.121Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="一个很弱的oier的胡言乱语">
+<meta name="twitter:title" content="STL - bitset 的使用">
+<meta name="twitter:description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -172,27 +173,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-bitset" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      STL - bitset 的使用
     </h1>
   
 
         
-        <a href="/tags/index.html" class="archive-article-date">
-  	<time datetime="2018-09-17T13:50:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
+        <a href="/2018/10/12/bitset/" class="archive-article-date">
+  	<time datetime="2018-10-12T12:06:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。</p>
+<a id="more"></a>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>首先第一个问题，什么是bitset。其实bitset是一个模版类，但它的模版参数不是类型，而是整型的数值。有了这个东西以后，我们就可以像数组一样使用位进行运算了。</p>
+<p>举个栗子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bitset&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  bitset&lt;16&gt; ff1(100);</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; ff1 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(上面的程序肯定是运行不了的，需要再加几个库)结果是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000000001100100</span><br></pre></td></tr></table></figure>
+<p>最通俗地来讲，bitset就是一个可以存储二进制数位的一个类型，基本就相当于一个布尔数组（布尔数组也可以转化成bitset类型），那么问题来了我们为啥不直接用布尔数组而是要学bitset呢？很简单因为bitset对空间有着很显著的优化，bitset中的一个元素一般只占1bit的空间，什么概念呢，相当于一个char类型的八分之一。所以当你遇到了丧心病狂的出题人出比较高端的压位卡常题的时候就需要这个东西的帮助了。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>和数组一样，bitset的长度在最开始定义的时候就要进行确认，如果需要不定长的bitset的话请用vector。</p>
+<p>可以转化成bitset的类型有很多就像上面的整型，除此之外还有string，甚至可以直接转化布尔数组。当然也可以直接定义一个空的bitset来进行你想要的操作，来让我们拓展一下上面的程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bitset&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  bitset&lt;16&gt; ff1;</span><br><span class="line">  bitset&lt;16&gt; ff2(100);</span><br><span class="line">  bitset&lt;16&gt; ff3(string(&quot;0110110101&quot;));</span><br><span class="line">  bitset&lt;16&gt; ff4(a);</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; ff1 &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; ff2 &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; ff3 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000000000000000</span><br><span class="line">0000000001100100</span><br><span class="line">0000000110110101</span><br></pre></td></tr></table></figure>
+<p>(布尔数组转化bitset一般用不到就不演示了有兴趣自己下去试试)</p>
+<p>另外，由于bitset还重载了运算符”[]”的原因所以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bitset&lt;16&gt; ff;</span><br><span class="line">ff[4] = 1;</span><br></pre></td></tr></table></figure>
+<p>这种直接把第5位赋值为1的操作也是存在的。</p>
+<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><p>和一般的整型变量一样，bitset支持and, or, xor, &lt;&lt;, &gt;&gt;的操作，这个是可以直接进行运算的，效果和一般的位运算是一模一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bitset&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int mian() &#123;</span><br><span class="line">  bitset&lt;4&gt; ff1(10);//1010</span><br><span class="line">  bitset&lt;4&gt; ff2(12);//1100</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; (ff1 &amp; ff2) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; (ff1 | ff2) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; (ff1 ^ ff2) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; (ff1 &lt;&lt; 1) &lt;&lt;endl;</span><br><span class="line">  cout &lt;&lt; (ff1 &gt;&gt; 1) &lt;&lt;endl;</span><br><span class="line">	cout &lt;&lt; (~ff1) &lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1000</span><br><span class="line">1110</span><br><span class="line">0110</span><br><span class="line">0100</span><br><span class="line">0101</span><br><span class="line">0101</span><br></pre></td></tr></table></figure>
+<p>所以在各种位运算中完全可以用bitset来执行各类操作来起到优化空间的作用。</p>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>对于一个叫做<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ff.size() //返回位数</span><br><span class="line">ff.count() //返回1的个数</span><br><span class="line">ff.any() //返回是否有1</span><br><span class="line">ff.none() //返回是否没有1</span><br><span class="line">ff.set() //全都变成1</span><br><span class="line">ff.set(p) //将第p + 1位变成1</span><br><span class="line">ff.set(p, x) //将第p + 1位变成x</span><br><span class="line">ff.reset() //全都变成0</span><br><span class="line">ff.reset(p) //将第p + 1位变成0</span><br><span class="line">ff.flip() //全都取反</span><br><span class="line">ff.flip(p) //将第p + 1位取反</span><br><span class="line">ff.to_ulong() //返回它转换为unsigned long的结果，如果超出范围则报错</span><br><span class="line">ff.to_ullong() //返回它转换为unsigned long long的结果，如果超出范围则报错</span><br><span class="line">ff.to_string() //返回它转换为string的结果</span><br></pre></td></tr></table></figure></p>
+<p>这个相信就不需要我进行什么说明了，会一点STL的一般都懂。</p>
+<h1 id="相关习题"><a href="#相关习题" class="headerlink" title="相关习题"></a>相关习题</h1><p>其实裸的bitset题真的不多，这个与其说是一种算法不如说是意志优化手段更为妥当一点所以我找的题不多</p>
+<h2 id="BZOJ-2208"><a href="#BZOJ-2208" class="headerlink" title="BZOJ - 2208"></a>BZOJ - 2208</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2208" target="_blank" rel="noopener">https://www.lydsy.com/JudgeOnline/problem.php?id=2208</a></p>
+<p>给的数据范围是一个很明显的Floyd但直接写会TLE，可以考虑可以开n个bitset f[i]表示i可以到达的点集，每次传递闭包的时候or一下就好了。</p>
+<h2 id="CH-2101"><a href="#CH-2101" class="headerlink" title="CH - 2101"></a>CH - 2101</h2><p> <a href="http://contest-hunter.org:83/contest/0x20%E3%80%8C%E6%90%9C%E7%B4%A2%E3%80%8D%E4%BE%8B%E9%A2%98/2101%20%E5%8F%AF%E8%BE%BE%E6%80%A7%E7%BB%9F%E8%AE%A1" target="_blank" rel="noopener">http://contest-hunter.org:83/contest/0x20%E3%80%8C%E6%90%9C%E7%B4%A2%E3%80%8D%E4%BE%8B%E9%A2%98/2101%20%E5%8F%AF%E8%BE%BE%E6%80%A7%E7%BB%9F%E8%AE%A1</a></p>
+<p>这道题很明显可以得到一个“从x出发的点是从x的各个后继节点y出发能到达的点的并集加上自身就就是答案”的结论。<br>这样做法就很明显了，先topsort一下，然后从后往前进行递推，bitset f[i]和前一道一样表示从x出发能到达点的数量，对各个后继节点y出发能到达的点求并也就是or操作一下就可以了。</p>
+<p>我最近也就做到了这两道题，以后如果有的话就继续加进来。</p>
+<p>这篇文章就酱。</p>
+
       
 
       
@@ -221,7 +253,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">bitset 位运算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL-经验//" class="article-tag-list-link color2">STL 经验</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -271,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/tags/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/12/bitset/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,6 +337,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/11/1011考试总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1011考试总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -304,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算"><span class="toc-number">3.</span> <span class="toc-text">运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关函数"><span class="toc-number">4.</span> <span class="toc-text">相关函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关习题"><span class="toc-number">5.</span> <span class="toc-text">相关习题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BZOJ-2208"><span class="toc-number">5.1.</span> <span class="toc-text">BZOJ - 2208</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CH-2101"><span class="toc-number">5.2.</span> <span class="toc-text">CH - 2101</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -346,7 +410,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
