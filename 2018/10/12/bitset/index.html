@@ -9,14 +9,14 @@
   <title>STL - bitset 的使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
-<meta name="keywords" content="bitset 位运算">
+<meta name="keywords" content="bitset">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL - bitset 的使用">
 <meta property="og:url" content="http://yoursite.com/2018/10/12/bitset/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T13:47:47.121Z">
+<meta property="og:updated_time" content="2018-10-12T13:50:27.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL - bitset 的使用">
 <meta name="twitter:description" content="听说这年头竟然有很多人都不会bitset(比如我)，这一篇文章就说说bitset的基本用法吧。">
@@ -215,7 +215,7 @@
 <p>结果为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1000</span><br><span class="line">1110</span><br><span class="line">0110</span><br><span class="line">0100</span><br><span class="line">0101</span><br><span class="line">0101</span><br></pre></td></tr></table></figure>
 <p>所以在各种位运算中完全可以用bitset来执行各类操作来起到优化空间的作用。</p>
-<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>对于一个叫做<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ff.size() //返回位数</span><br><span class="line">ff.count() //返回1的个数</span><br><span class="line">ff.any() //返回是否有1</span><br><span class="line">ff.none() //返回是否没有1</span><br><span class="line">ff.set() //全都变成1</span><br><span class="line">ff.set(p) //将第p + 1位变成1</span><br><span class="line">ff.set(p, x) //将第p + 1位变成x</span><br><span class="line">ff.reset() //全都变成0</span><br><span class="line">ff.reset(p) //将第p + 1位变成0</span><br><span class="line">ff.flip() //全都取反</span><br><span class="line">ff.flip(p) //将第p + 1位取反</span><br><span class="line">ff.to_ulong() //返回它转换为unsigned long的结果，如果超出范围则报错</span><br><span class="line">ff.to_ullong() //返回它转换为unsigned long long的结果，如果超出范围则报错</span><br><span class="line">ff.to_string() //返回它转换为string的结果</span><br></pre></td></tr></table></figure></p>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>对于一个叫做ff的bitset类来讲<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ff.size() //返回位数</span><br><span class="line">ff.count() //返回1的个数</span><br><span class="line">ff.any() //返回是否有1</span><br><span class="line">ff.none() //返回是否没有1</span><br><span class="line">ff.set() //全都变成1</span><br><span class="line">ff.set(p) //将第p + 1位变成1</span><br><span class="line">ff.set(p, x) //将第p + 1位变成x</span><br><span class="line">ff.reset() //全都变成0</span><br><span class="line">ff.reset(p) //将第p + 1位变成0</span><br><span class="line">ff.flip() //全都取反</span><br><span class="line">ff.flip(p) //将第p + 1位取反</span><br><span class="line">ff.to_ulong() //返回它转换为unsigned long的结果，如果超出范围则报错</span><br><span class="line">ff.to_ullong() //返回它转换为unsigned long long的结果，如果超出范围则报错</span><br><span class="line">ff.to_string() //返回它转换为string的结果</span><br></pre></td></tr></table></figure></p>
 <p>这个相信就不需要我进行什么说明了，会一点STL的一般都懂。</p>
 <h1 id="相关习题"><a href="#相关习题" class="headerlink" title="相关习题"></a>相关习题</h1><p>其实裸的bitset题真的不多，这个与其说是一种算法不如说是意志优化手段更为妥当一点所以我找的题不多</p>
 <h2 id="BZOJ-2208"><a href="#BZOJ-2208" class="headerlink" title="BZOJ - 2208"></a>BZOJ - 2208</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2208" target="_blank" rel="noopener">https://www.lydsy.com/JudgeOnline/problem.php?id=2208</a></p>
@@ -258,7 +258,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">bitset 位运算</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">bitset</a>
         		</li>
       		
 		</ul>
@@ -338,6 +338,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/10/14/10-14考试总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          1014考试总结
+        
+      </div>
+    </a>
   
   
     <a href="/2018/10/11/1011考试总结/" id="article-nav-older" class="article-nav-link-wrap">
@@ -505,7 +514,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">bitset 位运算</a>
+                <a href="javascript:void(0)" class="js-tag color2">bitset</a>
               </li>
              
               <li class="article-tag-list-item">
