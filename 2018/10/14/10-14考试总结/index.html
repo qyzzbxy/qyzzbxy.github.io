@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="这是10.14的考试总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-14T14:00:43.488Z">
+<meta property="og:updated_time" content="2018-10-28T11:34:19.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1014考试总结">
 <meta name="twitter:description" content="这是10.14的考试总结。">
@@ -198,6 +198,11 @@
 <p>首先要承认自己的一个锅，今天第三题的前三组数据我跑错了……因为我把n开到了5000但左区间和右区间却有可能会到10000导致好多查询是有问题的。所以前三组大家都wa了……所以要给大家承认个错误……</p>
 <p>既然说到第三题了，那就先写第三题的题解吧。</p>
 <p>题面应该是不能给，大致就是一道要求区间增加和区间查询的题，数据开到了50000而时间只有0.2秒，这样的话普通线段树大概是写不成了，因为常数过于大。那么写法的话我想到了三种正解：zkw线段树，树状数组和分块。由于分块的写法比较简单（才不是因为这道题的题目就叫分块）就直接写分块了。题挺裸的，基本属于板子题没什么可说的。但这道题由于数据出了问题，临时的数据是我出的，这个数据我就有点话想说了。</p>
+<p>先问一个问题，你觉得线段树和分块这两个算法哪一个更优秀一点？？</p>
+<p>可能会有人说这不是屁话吗，一个是O(nlogn)的算法 一个是O(n sqrt(n))的算法</p>
+<p>这还有什么疑问吗？</p>
+<p>但是经过我的比对，这道题的线段树及其之大，30000左右的数据就能够卡爆，而分块这个优秀算法竟然可以过60000的数据。换句话说算上常数的话，分块要比线段树优秀整整一倍（起码在这道题里）真是活久见。</p>
+<p>所以我丧心病狂地分别手写了普通线段树，zkw线段树，树状数组的差分版以及分块去跑这个程序，成功把这道题写线段树的人卡到了60分（没让你们爆零就已经很不错了）想想还有点小激动呢（毕竟老夫也不是什么魔鬼啊）</p>
 
       
 
@@ -487,11 +492,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">刷题柱</a>
+                <a href="javascript:void(0)" class="js-tag color2">bitset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">bitset</a>
+                <a href="javascript:void(0)" class="js-tag color4">刷题柱</a>
               </li>
              
               <li class="article-tag-list-item">
