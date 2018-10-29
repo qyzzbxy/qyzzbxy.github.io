@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="这是ppt没有讲到的字符串的匹配。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T12:08:02.768Z">
+<meta property="og:updated_time" content="2018-10-29T12:13:56.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串的匹配">
 <meta name="twitter:description" content="这是ppt没有讲到的字符串的匹配。">
@@ -211,6 +211,8 @@
 <h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span></span><br><span class="line">huangpuerniu</span><br><span class="line">tiandazhu</span><br><span class="line">pengx</span><br><span class="line">pxuan</span><br><span class="line">qinai</span><br><span class="line">huangpuerniu</span><br><span class="line">pengx</span><br><span class="line">qinai</span><br></pre></td></tr></table></figure>
 <h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
 <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>数据 &lt;= 跑得过</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题大家有什么思路吗？首先，我们可以很轻松地想到一种朴素算法：先定义一个string类型的数组然后计数，复杂度是n^2的，显然我们接受不了。</p>
+<p>当然，很多同学</p>
 
       
 
@@ -359,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串Hash"><span class="toc-number">1.</span> <span class="toc-text">字符串Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.1.</span> <span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#树神的后宫管理"><span class="toc-number">1.1.1.</span> <span class="toc-text">树神的后宫管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题面"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">题面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入样例"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">输入样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出样例"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">输出样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#说明"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">说明</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串Hash"><span class="toc-number">1.</span> <span class="toc-text">字符串Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.1.</span> <span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#树神的后宫管理"><span class="toc-number">1.1.1.</span> <span class="toc-text">树神的后宫管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题面"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">题面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入样例"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">输入样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出样例"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">输出样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#说明"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解"><span class="toc-number">1.1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -496,7 +498,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">bitset</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">刷题柱</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,11 +510,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">刷题柱</a>
+                <a href="javascript:void(0)" class="js-tag color2">bitset</a>
               </li>
             
             <div class="clearfix"></div>
